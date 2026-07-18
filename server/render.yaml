@@ -1,0 +1,7 @@
+services:
+  - type: web
+    name: presentmind-ai-api
+    env: node
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /api/health
