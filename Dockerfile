@@ -8,8 +8,8 @@ RUN apt-get update && apt-get install -y \
 
 WORKDIR /app
 
-COPY server/package*.json ./server/
-RUN npm install --prefix server
+COPY server/package.json ./server/
+RUN npm install --prefix server --registry=https://registry.npmjs.org --no-audit --no-fund
 
 COPY python_engine/requirements.txt ./python_engine/requirements.txt
 RUN pip3 install --no-cache-dir --break-system-packages -r python_engine/requirements.txt
@@ -22,3 +22,5 @@ WORKDIR /app/server
 ENV PYTHON_COMMAND=python3
 
 CMD ["npm", "start"]
+
+
